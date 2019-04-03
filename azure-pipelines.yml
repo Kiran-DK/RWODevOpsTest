@@ -11,25 +11,13 @@ variables:
   b: variables['Build.BuildNumber']
   c: variables['Build.SourceVersion']
 
-jobs:
-- job: Install_dependency
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
+pool:
+  name: Build_deploy
+  demands: agent.os -equals Linux
+
+steps:
   - bash: apt-get install -y libboost-all-dev
-
-- job: Build_Compile
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
   - bash: g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
-
-- job: Assign_Build_number
-  dependsOn: Install_dependency
-  condition: succeeded()
-  pool:
-    vmImage: 'ubuntu-16.04'
-  steps:
   - bash: BUILD_NUMBER = $r.$b.$c
   - bash: mv binary.out $BUILD_NUMBER.out
   - bash: README=./readme.txt
