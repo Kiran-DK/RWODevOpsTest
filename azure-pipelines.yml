@@ -10,6 +10,8 @@ variables:
   r: Release
   b: variables['Build.BuildNumber']
   c: variables['Build.SourceVersion']
+  BUILD_NUMBER: $r.$b.$c
+  README: ./readme.txt 
 
 pool:
   vmImage: 'ubuntu-16.04'
@@ -17,9 +19,9 @@ pool:
 steps:
   - bash: sudo apt-get install -y libboost-all-dev
   - bash: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
-  - bash: sudo BUILD_NUMBER = $r.$b.$c
+
   - bash: sudo mv binary.out $BUILD_NUMBER.out
-  - bash: sudo README=./readme.txt
+  
   - bash: if [ ! -f readme.txt ];
           then echo $(touch readme.txt)
           fi
