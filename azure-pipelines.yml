@@ -22,7 +22,5 @@ steps:
 
   - bash: sudo mv binary.out $BUILD_NUMBER.out
   
-  - bash: if [ ! -f readme.txt ];
-          then echo $(touch readme.txt)
-          fi
+
   - bash: sudo echo $BUILD_NUMBER | tee -a $README
