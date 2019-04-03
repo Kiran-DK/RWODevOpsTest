@@ -12,7 +12,7 @@ variables:
   c: variables['Build.SourceVersion']
 
 pool:
-  name: Build_deploy
+  name: Default
   demands: agent.os -equals Linux
 
 steps:
