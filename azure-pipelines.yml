@@ -12,8 +12,7 @@ variables:
   c: variables['Build.SourceVersion']
 
 pool:
-  name: Default
-  demands: agent.os -equals Linux
+  vmImage: 'ubuntu-16.04'
 
 steps:
   - bash: apt-get install -y libboost-all-dev
