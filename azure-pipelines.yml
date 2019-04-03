@@ -26,7 +26,7 @@ jobs:
 
 - job: Assign_Build_number
   dependsOn: Install_dependency
-  condition: and(succeeded())
+  condition: succeeded()
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
