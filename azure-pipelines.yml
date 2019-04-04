@@ -14,7 +14,7 @@ variables:
   README: readme.txt 
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  demands: agent.os -equals Linux
 
 steps:
   - script: sudo apt-get install -y libboost-all-dev
@@ -25,7 +25,7 @@ steps:
 
   - script: sudo echo $BUILD_NUMBER | tee -a $README
 
-  - task: CopyFiles@2
+  - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
       Contents: |
