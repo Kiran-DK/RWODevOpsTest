@@ -20,7 +20,7 @@ steps:
   - script: sudo apt-get install -y libboost-all-dev
   - script: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
  
-  - script: sudo mv binary.out $env:BUILD_ARTIFACTSTAGINGDIRECTORY/$BUILD_NUMBER.out
+  - script: sudo mv binary.out $BUILD_NUMBER.out
   
 
   - script: sudo echo $BUILD_NUMBER | tee -a $env:BUILD_ARTIFACTSTAGINGDIRECTORY/$README
