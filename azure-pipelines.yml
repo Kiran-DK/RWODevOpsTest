@@ -11,7 +11,7 @@ variables:
   b: $(Rev:.r)
   c: $(Build.SourceVersion)
   BUILD_NUMBER: $r$b.$c
-  README: readme.txt 
+  README: /home/vsts/work/_temp/readme.txt 
 
 pool: 
   vmImage: ubuntu-16.04
@@ -20,15 +20,15 @@ steps:
   - script: sudo apt-get install -y libboost-all-dev
   - script: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
  
-  - script: sudo mv binary.out $BUILD_NUMBER.out
+  - script: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
   
 
-  - script: sudo echo $BUILD_NUMBER | tee -a $README
+  - script: sudo echo $BUILD_NUMBER | tee -a /home/vsts/work/_temp/$README
 
   - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
       Contents: |
-       /*.out
-       /readme.txt
+       /home/vsts/work/_temp/*.out
+       /home/vsts/work/_temp/readme.txt
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
