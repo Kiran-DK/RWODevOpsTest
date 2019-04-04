@@ -23,7 +23,7 @@ steps:
   - script: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
   
 
-  - script: sudo echo $BUILD_NUMBER | tee -a /home/vsts/work/_temp/$README
+  - script: sudo echo $BUILD_NUMBER | tee -a $README
 
   - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
