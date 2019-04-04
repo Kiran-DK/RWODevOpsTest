@@ -13,9 +13,9 @@ variables:
   BUILD_NUMBER: $r$b.$c
   README: readme.txt 
 
-pool:
-  name: myAgent 
+pool: 
   demands: agent.os -equals Linux
+  vmImage: ubuntu-16.04
 
 steps:
   - script: sudo apt-get install -y libboost-all-dev
