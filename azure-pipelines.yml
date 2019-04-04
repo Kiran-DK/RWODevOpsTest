@@ -23,7 +23,7 @@ steps:
   - script: sudo mv binary.out $BUILD_NUMBER.out
   
 
-  - script: sudo echo $BUILD_NUMBER | tee -a $env:BUILD_ARTIFACTSTAGINGDIRECTORY/$README
+  - script: sudo echo $BUILD_NUMBER | tee -a $README
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
