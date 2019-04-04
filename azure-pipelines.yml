@@ -22,6 +22,9 @@ steps:
  
   - script: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
   
+  - script: if [ ! -f $README ];
+            then echo $(touch $README)
+            fi
 
   - script: sudo echo $BUILD_NUMBER | tee -a $README
 
