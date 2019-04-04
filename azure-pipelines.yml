@@ -8,8 +8,8 @@ trigger:
 
 variables:
   r: Release
-  b: variables['Build.BuildNumber']
-  c: variables['Build.SourceVersion']
+  b: $(Build.BuildNumber)
+  c: $(Build.SourceVersion)
   BUILD_NUMBER: $r.$b.$c
   README: ./readme.txt 
 
