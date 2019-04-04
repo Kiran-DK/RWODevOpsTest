@@ -18,7 +18,7 @@ pool:
 
 steps:
   - script: sudo apt-get install -y libboost-all-dev
-  - script: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
+  - script: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o /home/vsts/work/_temp/binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
  
   - script: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
   
