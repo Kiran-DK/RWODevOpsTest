@@ -14,7 +14,6 @@ variables:
   README: readme.txt 
 
 pool: 
-  demands: agent.os -equals Linux
   vmImage: ubuntu-16.04
 
 steps:
@@ -30,6 +29,6 @@ steps:
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
       Contents: |
-       \*.out
-       \readme.txt
+       /*.out
+       /readme.txt
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
