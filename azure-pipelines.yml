@@ -22,11 +22,11 @@ steps:
  
   - bash: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
   
-  - bash: if [ ! -f $README ];
-          then sudo touch $README 
+  - bash: "if [ ! -f $README ];
+          then echo $(sudo touch $README) 
           else 
           echo 
-          fi
+          fi"
 
   - bash: sudo echo $BUILD_NUMBER | tee -a $README
 
