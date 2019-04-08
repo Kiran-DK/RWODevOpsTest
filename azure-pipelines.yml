@@ -17,18 +17,18 @@ pool:
   vmImage: ubuntu-16.04
 
 steps:
-  - script: sudo apt-get install -y libboost-all-dev
-  - script: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o /home/vsts/work/_temp/binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
+  - bash: sudo apt-get install -y libboost-all-dev
+  - bash: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o /home/vsts/work/_temp/binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
  
-  - script: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
+  - bash: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
   
-  - script: if [ ! -f $README ];
+  - bash: if [ ! -f $README ];
             then echo $(sudo touch $README)
             else
             echo 
             fi
 
-  - script: sudo echo $BUILD_NUMBER | tee -a $README
+  - bash: sudo echo $BUILD_NUMBER | tee -a $README
 
   - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
