@@ -25,6 +25,7 @@ steps:
   - script: if [ ! -f $README ];
             then echo $(touch $README)
             else
+            echo 
             fi
 
   - script: sudo echo $BUILD_NUMBER | tee -a $README
