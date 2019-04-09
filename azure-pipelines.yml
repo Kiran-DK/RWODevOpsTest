@@ -25,7 +25,8 @@ steps:
 
   - bash: cd /home/vsts/work/_temp
   
-  - bash: if [ ! -f $(README) ];
+  - bash: |
+          if [ ! -f $(README) ];
           then 
           sudo touch $(README) 
           else 
