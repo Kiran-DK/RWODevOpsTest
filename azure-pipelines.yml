@@ -33,7 +33,7 @@ steps:
           sudo echo 
           fi
 
-  - bash: sudo echo $BUILD_NUMBER | tee -a $(README)
+  - bash: sudo echo $BUILD_NUMBER | sudo tee -a $(README)
 
   - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
