@@ -27,7 +27,7 @@ steps:
   
   - bash: if [ ! -f $(README) ];
           then 
-          sudo echo $(touch $(README)) 
+          sudo touch $(README) 
           else 
           sudo echo 
           fi
