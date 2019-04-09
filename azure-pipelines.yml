@@ -8,9 +8,9 @@ trigger:
 
 variables:
   r: $(Date:yyyyMMdd)
-  b: $(rev:.r)
+  b: $(Build.BuildNumber)
   c: $(Build.SourceVersion)
-  BUILD_NUMBER: $(r)$(b).$(c)
+  BUILD_NUMBER: $(b).$(c)
   README: "/home/vsts/work/_temp/readme.txt" 
 
 pool: 
