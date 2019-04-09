@@ -21,10 +21,12 @@ steps:
   - bash: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o /home/vsts/work/_temp/binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
  
   - bash: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
+
+  - bash: ls /home/vsts/work/_temp/
   
-  - bash: sudo if [ ! -f $README ];
+  - bash: if [ ! -f "$README" ];
           then 
-          echo $(touch $README) 
+          echo $(touch "$README") 
           else 
           echo 
           fi
