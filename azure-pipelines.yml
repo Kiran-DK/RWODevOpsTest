@@ -7,10 +7,10 @@ trigger:
 - master
 
 variables:
-  r: $(Date)
-  b: $(Rev)
+  r: $(Date:yyyyMMdd)
+  b: $(Rev:.r)
   c: $(Build.SourceVersion)
-  BUILD_NUMBER: $(r)$(b).$(c)
+  BUILD_NUMBER: $(r).$(b).$(c)
   README: "/home/vsts/work/_temp/readme.txt" 
 
 pool: 
