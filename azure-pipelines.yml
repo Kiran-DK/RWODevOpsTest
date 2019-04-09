@@ -10,7 +10,7 @@ variables:
   r: $(Date:yyyyMMdd)
   b: $(Rev:.r)
   c: $(Build.SourceVersion)
-  BUILD_NUMBER: $r$b.$c
+  BUILD_NUMBER: $(r)$(b).$(c)
   README: "/home/vsts/work/_temp/readme.txt" 
 
 pool: 
@@ -18,11 +18,16 @@ pool:
 
 steps:
   - bash: sudo apt-get install -y libboost-all-dev
+
   - bash: sudo g++ -std=c++11 -I/usr/include/boost/asio -I/usr/include/boost -o /home/vsts/work/_temp/binary.out main.cpp connection.cpp connection_manager.cpp mime_types.cpp reply.cpp request_handler.cpp request_parser.cpp server.cpp -lboost_system -lboost_thread -lpthread
- 
+
+  - bash: ls /home/vsts/work/_temp
+
   - bash: sudo mv /home/vsts/work/_temp/binary.out /home/vsts/work/_temp/$BUILD_NUMBER.out
 
   - bash: ls /home/vsts/work/_temp/
+
+  - bash: echo $README
   
   - bash: if [ ! -f "$README" ];
           then 
