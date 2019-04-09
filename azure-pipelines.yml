@@ -25,14 +25,14 @@ steps:
 
   - bash: cd /home/vsts/work/_temp
   
-  - bash: if [ ! -f readme.txt ];
+  - bash: if [ ! -f $(README) ];
           then 
-          sudo echo $(touch readme.txt) 
+          sudo echo $(touch $(README)) 
           else 
           sudo echo 
           fi
 
-  - bash: sudo echo $BUILD_NUMBER | tee -a readme.txt
+  - bash: sudo echo $BUILD_NUMBER | tee -a $(README)
 
   - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
