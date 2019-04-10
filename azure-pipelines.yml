@@ -45,3 +45,12 @@ steps:
        *.out
        readme.txt
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Files'
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      publishLocation: Container 
+      TargetPath: 
+      artifactName: MyBuildOutputs
+      
