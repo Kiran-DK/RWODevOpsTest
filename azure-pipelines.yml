@@ -35,6 +35,8 @@ steps:
 
   - bash: sudo echo $(BUILD_NUMBER) | sudo tee -a $(README)
 
+  - bash: sudo cat $(README)
+
   - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
