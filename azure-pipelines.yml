@@ -38,7 +38,8 @@ steps:
   - task: CopyFiles@1
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
+      SourceFolder: /home/vsts/work/_temp/
       Contents: |
-       /home/vsts/work/_temp/*.out
-       /home/vsts/work/_temp/readme.txt
+       *.out
+       readme.txt
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
