@@ -46,7 +46,7 @@ steps:
        readme.txt
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-  - bash: ls /home/vsts/work/_temp
+  - bash: ls /home/vsts/work/1/s
   
   - bash: sudo cp /home/vsts/work/_temp/Dockerfile /home/vsts/work/1/a/
 
