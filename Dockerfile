@@ -3,5 +3,6 @@ COPY . /app
 WORKDIR /app
 RUN apt-get update
 RUN apt-get install -y libboost-all-dev
+RUN BUILD=$(cat *.txt)
 EXPOSE 80/tcp 443/tcp
-ENTRYPOINT [ "./*.out" ]
+ENTRYPOINT [ "./$BUILD.out" ]
