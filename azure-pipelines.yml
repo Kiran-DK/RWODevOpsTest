@@ -48,6 +48,8 @@ steps:
 
   - bash: sudo cp /home/vsts/work/1/s/Dockerfile '$(Build.ArtifactStagingDirectory)'
 
+  - bash: sudo cp /home/vsts/work/1/s/index.html '$(Build.ArtifactStagingDirectory)'
+
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Files'
     inputs:
